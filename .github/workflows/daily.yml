@@ -1,0 +1,47 @@
+name: AI 行业日报
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 北京时间早上8点（UTC 0点）
+  workflow_dispatch:       # 允许手动触发
+
+jobs:
+  daily-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: pip install requests python-dotenv
+
+      - name: 创建 .env 文件
+        run: |
+          cat > .env << EOF
+          DOUBAO_API_KEY=${{ secrets.DOUBAO_API_KEY }}
+          DOUBAO_MODEL=${{ secrets.DOUBAO_MODEL }}
+          SERPER_API_KEY=${{ secrets.SERPER_API_KEY }}
+          OUTLOOK_EMAIL=${{ secrets.OUTLOOK_EMAIL }}
+          OUTLOOK_PASSWORD=${{ secrets.OUTLOOK_PASSWORD }}
+          RECIPIENT_EMAILS=${{ secrets.RECIPIENT_EMAILS }}
+          EOF
+
+      - name: 创建必要目录
+        run: mkdir -p logs cache output
+
+      - name: 运行日报
+        run: python main.py
+
+      - name: 上传 HTML 产物（可选，方便查看）
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: daily-report
+          path: output/*.html
+          retention-days: 7
