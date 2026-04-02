@@ -39,7 +39,7 @@ jobs:
         run: python main.py
 
       - name: 上传 HTML 产物
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         if: always()
         with:
           name: daily-report-${{ github.run_id }}
