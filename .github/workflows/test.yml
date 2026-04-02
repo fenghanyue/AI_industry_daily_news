@@ -1,0 +1,12 @@
+name: 定时测试
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # 每5分钟触发一次
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 打印时间
+        run: echo "触发成功，当前时间：$(date)"
