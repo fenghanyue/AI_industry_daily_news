@@ -59,7 +59,7 @@ def fetch_category(cat_id: str, queries: List[str],
             resp = requests.post(
                 SERPER_URL,
                 headers={"X-API-KEY": serper_api_key, "Content-Type": "application/json"},
-                json={"q": query, "gl": "cn", "hl": "zh-cn", "num": 10, "tbs": "qdr:d2"},
+                json={"q": query, "gl": "cn", "hl": "zh-cn", "num": 10, "tbs": "qdr:d"},
                 timeout=15,
             )
             resp.raise_for_status()
