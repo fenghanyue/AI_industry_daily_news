@@ -45,8 +45,7 @@ def main(profile_name="ai", dry_run=False, no_fetch=False):
     profile    = load_profile(profile_name)
     categories = profile.CATEGORIES
     title      = profile.REPORT_TITLE
-    serper_env = profile.SERPER_KEY_ENV
-    alert_subjects = getattr(profile, "ALERT_SUBJECTS", None)  # 新增
+    alert_subjects = getattr(profile, "ALERT_SUBJECTS", None)
 
     cache_file = Path(f"cache/last_{profile_name}.json")
 
@@ -64,8 +63,7 @@ def main(profile_name="ai", dry_run=False, no_fetch=False):
     else:
         # Step 1: 抓取昨日新闻
         logger.info("Step 1/3: 抓取昨日新闻...")
-        raw_news = fetch_all(categories, serper_key_env=serper_env,
-                             alert_subjects=alert_subjects)
+        raw_news = fetch_all(categories, alert_subjects=alert_subjects)
 
         # Step 2: 豆包筛选 + 核验时间
         logger.info("Step 2/3: 豆包筛选核验时间...")

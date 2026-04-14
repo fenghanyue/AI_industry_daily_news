@@ -5,7 +5,6 @@
 
 REPORT_TITLE = "电池行业日报"
 REPORT_EMOJI = "🔋"
-SERPER_KEY_ENV = "SERPER_API_KEY_BATTERY"   # 读哪个环境变量
 
 # ── Google Alerts 邮件过滤 ──
 # 只处理邮件标题中包含以下关键词的 Alert 邮件

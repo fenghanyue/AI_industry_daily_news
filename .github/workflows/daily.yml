@@ -28,8 +28,6 @@ jobs:
           DOUBAO_MODEL=${{ secrets.DOUBAO_MODEL }}
           GMAIL_ADDRESS=${{ secrets.GMAIL_ADDRESS }}
           GMAIL_APP_PASSWORD=${{ secrets.GMAIL_APP_PASSWORD }}
-          SERPER_API_KEY=${{ secrets.SERPER_API_KEY }}
-          SERPER_API_KEY_BATTERY=${{ secrets.SERPER_API_KEY_BATTERY }}
           OUTLOOK_EMAIL=${{ secrets.OUTLOOK_EMAIL }}
           OUTLOOK_PASSWORD=${{ secrets.OUTLOOK_PASSWORD }}
           RECIPIENT_EMAILS=${{ secrets.RECIPIENT_EMAILS }}

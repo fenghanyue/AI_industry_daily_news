@@ -18,7 +18,7 @@ AVAILABLE_PROFILES = {
 def load_profile(name: str):
     """
     加载指定 profile 的配置模块。
-    返回模块对象，可通过 .CATEGORIES / .REPORT_TITLE / .SERPER_KEY_ENV 访问。
+    返回模块对象，可通过 .CATEGORIES / .REPORT_TITLE 访问。
     """
     if name not in AVAILABLE_PROFILES:
         raise ValueError(
@@ -30,6 +30,5 @@ def load_profile(name: str):
 # ═══ 向后兼容：如果有旧代码直接 from config.settings import CATEGORIES ═══
 # 默认加载 AI 配置
 _default = load_profile("ai")
-CATEGORIES     = _default.CATEGORIES
-REPORT_TITLE   = _default.REPORT_TITLE
-SERPER_KEY_ENV = _default.SERPER_KEY_ENV
+CATEGORIES   = _default.CATEGORIES
+REPORT_TITLE = _default.REPORT_TITLE
