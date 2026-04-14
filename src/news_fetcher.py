@@ -57,7 +57,7 @@ def _to_ymd(date_str: str) -> str:
 
 
 def fetch_category_serper(cat_id: str, queries: List[str],
-                          serper_api_key: str, lookback_days: int = 2) -> List[Dict]:
+                          serper_api_key: str, lookback_days: int = 1) -> List[Dict]:
     """Serper 搜一个分类（原逻辑保留）"""
     now     = datetime.now(timezone.utc)
     cutoff  = now - timedelta(days=lookback_days)
